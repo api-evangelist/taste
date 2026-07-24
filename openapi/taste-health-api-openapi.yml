@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Taste Engine health API
+  description: API for extracting design guidelines and generating creative briefs
+  version: 1.0.0
+tags:
+- name: health
+paths:
+  /health:
+    get:
+      tags:
+      - health
+      summary: Liveness Check
+      description: Liveness probe - returns 200 if the process is up.
+      operationId: liveness_check_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /health/full:
+    get:
+      tags:
+      - health
+      summary: Health Check
+      description: 'Full health check. The gateway proxies to core via /v2 and has no
+
+        in-repo downstream services to probe, so this reports process liveness.'
+      operationId: health_check_health_full_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+components:
+  schemas:
+    HealthResponse:
+      properties:
+        status:
+          type: string
+          title: Status
+          default: healthy
+        version:
+          type: string
+          title: Version
+          default: 1.0.0
+        services:
+          additionalProperties:
+            type: string
+          type: object
+          title: Services
+      type: object
+      title: HealthResponse
+      description: Health check response.
