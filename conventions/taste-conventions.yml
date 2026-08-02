@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/taste-taste-engine-openapi.json + live probe
+authentication:
+  style: http-bearer
+  header: Authorization
+  detail: See authentication/taste-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    No Idempotency-Key header or idempotent-retry contract is documented. The
+    two write operations (POST /enhance/, POST /enhance/slides) are prompt
+    enhancement calls; no idempotency semantics are published.
+pagination:
+  supported: false
+  note: No list/collection endpoints; the surface is health + two enhance operations.
+versioning:
+  scheme: semver
+  current: '1.0.0'
+  note: >-
+    Health responses report version 1.0.0. The full health check notes the
+    gateway proxies to a core service via /v2 internally; only the /enhance and
+    /health surface is publicly exposed.
+error_envelope:
+  field: detail
+  format: fastapi-detail
+  detail: See errors/taste-problem-types.yml
+request_tracing:
+  request_id: >-
+    EnhanceResponse returns a request_id field (and an id record id) on
+    successful enhancement responses.
+rate_limit_signaling:
+  documented: false
+content_type: application/json

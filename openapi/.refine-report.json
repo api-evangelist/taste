@@ -1,0 +1,18 @@
+{
+  "provider": "taste",
+  "sources": [
+    "taste-health-api-openapi.yml",
+    "taste-prompt-enhancement-api-openapi.yml",
+    "taste-taste-engine-api-api-openapi.yml"
+  ],
+  "outputs": [
+    "taste-health-api-openapi.yml",
+    "taste-prompt-enhancement-api-openapi.yml",
+    "taste-taste-engine-api-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

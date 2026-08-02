@@ -1,0 +1,7 @@
+generated: '2026-07-21'
+method: generated
+skills:
+  - file: taste-enhance-design-prompt.md
+    name: Enhance a design prompt with brand guidelines
+    api: openapi/taste-taste-engine-openapi.json
+    operations: [enhance_prompt_enhance__post, enhance_slides_prompt_enhance_slides_post, liveness_check_health_get]

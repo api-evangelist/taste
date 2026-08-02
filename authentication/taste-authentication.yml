@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: https://api.tastelabs.com/ (live probe) + openapi/taste-taste-engine-openapi.json
+docs: null
+note: >-
+  The published OpenAPI declares no components.securitySchemes, but the live API
+  gateway (https://api.tastelabs.com/) rejects unauthenticated requests with
+  HTTP 401 and the body {"detail":"Authentication required. Provide
+  Authorization: Bearer <token> header."}. Every operation also accepts an
+  optional `Authorization` request header. Auth is therefore HTTP Bearer,
+  observed at runtime rather than formally declared in the spec.
+summary:
+  types: [http]
+  http_schemes: [bearer]
+  api_key_in: []
+  oauth2_flows: []
+schemes:
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    in: header
+    header: Authorization
+    format: Bearer <token>
+    evidence:
+      - source: live 401 on https://api.tastelabs.com/
+        detail: 'Authentication required. Provide Authorization: Bearer <token> header.'
+      - source: openapi/taste-taste-engine-openapi.json
+        detail: each operation declares an optional Authorization header parameter
+    sources: [openapi/taste-taste-engine-openapi.json]

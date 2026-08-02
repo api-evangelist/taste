@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/taste-taste-engine-openapi.json + live probe
+versioning:
+  scheme: semver
+  current: '1.0.0'
+  note: >-
+    Health endpoints report version 1.0.0. The full health check indicates the
+    gateway proxies to a core service via an internal /v2 path.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No published deprecation policy or Sunset/Deprecation header support found.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+note: >-
+  No public status page, SLA, or deprecation policy located for Taste Labs
+  (pre-product research lab). No StatusPage or Deprecation pointer emitted.

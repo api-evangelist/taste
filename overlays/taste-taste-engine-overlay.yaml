@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Taste Engine API
+  version: 1.0.0
+extends: openapi/taste-taste-engine-openapi.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: taste
+      x-apievangelist-source: https://api.tastelabs.com/openapi.json
+      x-apievangelist-notes: >-
+        Captured verbatim from the live gateway. Servers[] is empty in the source
+        spec; the production base URL observed at runtime is
+        https://api.tastelabs.com.
+  - target: $.servers
+    update:
+      - url: https://api.tastelabs.com
+        description: Taste Engine API gateway (production, observed)
+  - target: $.components.securitySchemes
+    update:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        description: >-
+          Observed at runtime — the gateway returns 401 without an
+          `Authorization: Bearer <token>` header. Not declared in the source spec.

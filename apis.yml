@@ -1,26 +1,111 @@
 aid: taste
 name: Taste
-description: 'Taste is a company surfaced as a portfolio company of crv and added to the API Evangelist
-  network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Taste Labs is a San Francisco research lab and infrastructure company building
+  "the taste layer for AI" — decoding subjective design domains to end AI slop.
+  Its Taste Engine API extracts brand and design guidelines from a reference site
+  or a prior submission and enhances website and slide-deck prompts so AI
+  generation stays on-brand, returning an enhanced prompt plus structured brand
+  context and reasoning. The company is backed by CRV and Amplify Partners and
+  runs the TasteMakers community program. This profile was enriched from the
+  provider's live public surface, including the Taste Engine API OpenAPI.
 url: https://raw.githubusercontent.com/api-evangelist/taste/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/6a1d5baf94efef5f7c435fc3/6a306ae79b1ce1b28e27e16b_taste_Logo.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - crv
+- amplify
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Ai
-apis: []
+- Design
+- Machine Learning
+- Developer Tools
+- Prompt Engineering
+- Content Generation
+apis:
+- aid: taste:taste-health-api
+  name: Taste health API
+  description: The health API from Taste — 2 operation(s) for health.
+  humanURL: https://tastelabs.com/
+  baseURL: https://api.tastelabs.com
+  tags:
+  - health
+  properties:
+  - type: OpenAPI
+    url: openapi/taste-health-api-openapi.yml
+- aid: taste:taste-prompt-enhancement-api
+  name: Taste Prompt Enhancement API
+  description: The Prompt Enhancement API from Taste — 2 operation(s) for prompt enhancement.
+  humanURL: https://tastelabs.com/
+  baseURL: https://api.tastelabs.com
+  tags:
+  - Prompt Enhancement
+  properties:
+  - type: OpenAPI
+    url: openapi/taste-prompt-enhancement-api-openapi.yml
+- aid: taste:taste-taste-engine-api-api
+  name: Taste Taste Engine API API
+  description: The Taste Engine API API from Taste — 1 operation(s) for taste engine api.
+  humanURL: https://tastelabs.com/
+  baseURL: https://api.tastelabs.com
+  tags:
+  - Taste Engine API
+  properties:
+  - type: OpenAPI
+    url: openapi/taste-taste-engine-api-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/taste-domain-security.yml
 - type: Website
   url: https://tastelabs.com/
+- type: Blog
+  url: https://tastelabs.com/blog
+- type: Authentication
+  url: authentication/taste-authentication.yml
+- type: ErrorCatalog
+  url: errors/taste-problem-types.yml
+- type: Conventions
+  url: conventions/taste-conventions.yml
+- type: DataModel
+  url: data-model/taste-data-model.yml
+- type: MCPServer
+  url: mcp/taste-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/taste-llms.txt
+- type: Conformance
+  url: conformance/taste-conformance.yml
+- type: WellKnown
+  url: well-known/taste-well-known.yml
+- type: Lifecycle
+  url: lifecycle/taste-lifecycle.yml

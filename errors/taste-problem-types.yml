@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/taste-taste-engine-openapi.json + live probe
+format: fastapi-detail
+envelope:
+  field: detail
+  note: >-
+    Errors use the FastAPI/Starlette convention, not RFC 9457 problem+json.
+    Authentication and client errors return {"detail": "<message>"}; request
+    validation errors (422) return {"detail": [ {loc, msg, type}, ... ]} per the
+    HTTPValidationError schema.
+problems:
+  - status: 401
+    title: Authentication required
+    detail: 'Authentication required. Provide Authorization: Bearer <token> header.'
+    source: live probe on https://api.tastelabs.com/
+  - status: 422
+    title: Validation Error
+    schema: HTTPValidationError
+    detail: Request body failed schema validation; detail[] lists loc/msg/type per field.
+    source_operations:
+      - openapi/taste-taste-engine-openapi.json#enhance_prompt_enhance__post
+      - openapi/taste-taste-engine-openapi.json#enhance_slides_prompt_enhance_slides_post
+      - openapi/taste-taste-engine-openapi.json#root__get

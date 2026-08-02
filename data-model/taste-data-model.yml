@@ -1,0 +1,66 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/taste-taste-engine-openapi.json
+entities:
+  - name: EnhanceRequest
+    kind: request
+    description: Request to enhance a website design prompt using brand guidelines.
+    required: [prompt, url]
+    fields:
+      - {name: prompt, type: string, description: The user's prompt to enhance}
+      - {name: url, type: string, description: URL or submission ID to fetch brand guidelines from}
+      - {name: user_id, type: string, nullable: true}
+      - {name: strategy, type: EnhancementStrategy, default: structured}
+      - {name: surface_type, type: DesignSurface, nullable: true}
+      - {name: include_sections, type: array<string>, nullable: true}
+      - {name: exclude_sections, type: array<string>, nullable: true}
+      - {name: additional_context, type: string, nullable: true}
+      - {name: auto_extract, type: boolean, default: false}
+  - name: SlidesEnhanceRequest
+    kind: request
+    description: Request to enhance a slides/deck prompt using brand guidelines from a prior extraction.
+    required: [prompt, submission_id]
+    fields:
+      - {name: prompt, type: string}
+      - {name: submission_id, type: string}
+      - {name: user_id, type: string, nullable: true}
+      - {name: strategy, type: EnhancementStrategy, default: structured}
+      - {name: slide_surface, type: SlideSurface, nullable: true}
+      - {name: num_slides, type: integer, nullable: true}
+      - {name: include_slide_types, type: array<string>, nullable: true}
+      - {name: exclude_slide_types, type: array<string>, nullable: true}
+      - {name: additional_context, type: string, nullable: true}
+  - name: EnhanceResponse
+    kind: response
+    description: Response from prompt enhancement (returned by both enhance operations).
+    required: [enhanced_prompt]
+    fields:
+      - {name: id, type: string, description: Database record ID}
+      - {name: request_id, type: string}
+      - {name: original_prompt, type: string}
+      - {name: enhanced_prompt, type: string}
+      - {name: structured_prompt, type: object}
+      - {name: brand_context, type: object}
+      - {name: reasoning, type: string}
+      - {name: processing_time_ms, type: integer}
+      - {name: model_used, type: string}
+  - name: HealthResponse
+    kind: response
+    fields:
+      - {name: status, type: string, default: healthy}
+      - {name: version, type: string, default: '1.0.0'}
+      - {name: services, type: object}
+enums:
+  - name: EnhancementStrategy
+    values: [full_rewrite, augment, structured, minimal]
+  - name: DesignSurface
+    values: [landing_page, product_page, pricing_page, about_page, blog_page, dashboard, marketing_site, saas_app, e_commerce, portfolio, other]
+  - name: SlideSurface
+    values: [pitch_deck, investor_deck, sales_deck, product_deck, company_overview, quarterly_review, team_update, workshop, training, webinar, conference, case_study, proposal, other]
+relationships:
+  - {from: EnhanceRequest, to: EnhanceResponse, kind: produces, via: 'POST /enhance/'}
+  - {from: SlidesEnhanceRequest, to: EnhanceResponse, kind: produces, via: 'POST /enhance/slides'}
+  - {from: EnhanceRequest, to: EnhancementStrategy, kind: has_one, via: strategy}
+  - {from: EnhanceRequest, to: DesignSurface, kind: has_one, via: surface_type}
+  - {from: SlidesEnhanceRequest, to: EnhancementStrategy, kind: has_one, via: strategy}
+  - {from: SlidesEnhanceRequest, to: SlideSurface, kind: has_one, via: slide_surface}
