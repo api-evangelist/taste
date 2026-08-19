@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Taste Engine health API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Liveness Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health"
+          },
+          "docs": "Liveness probe - returns 200 if the process is up."
+        },
+        {
+          "info": {
+            "name": "Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/health/full"
+          },
+          "docs": "Full health check. The gateway proxies to core via /v2 and has no\nin-repo downstream services to probe, so this reports process liveness."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

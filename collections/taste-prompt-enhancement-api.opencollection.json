@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Taste Engine health Prompt Enhancement API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Prompt Enhancement",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enhance Prompt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/enhance/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enhance a website design prompt using brand guidelines (sync).\n\nFetches brand guidelines from an existing extraction (by URL or submission ID)\nand enhances the user's prompt with brand-specific design tokens."
+        },
+        {
+          "info": {
+            "name": "Enhance Slides Prompt",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/enhance/slides",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enhance a slides prompt using brand guidelines from an existing deck (sync).\n\nFetches deck analysis/guidelines from a previous slides extraction and\nenhances the user's prompt for brand-consistent slide creation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

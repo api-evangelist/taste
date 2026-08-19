@@ -2,17 +2,22 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/taste-taste-engine-openapi.json
-note: >-
-  No official hosted/remote MCP server was found for Taste. This is a candidate
-  tool list derived from the Taste Engine API operations so an MCP server could
-  be forged from the OpenAPI. Not a published provider artifact.
+note: No official hosted/remote MCP server was found for Taste. This is a candidate tool list derived
+  from the Taste Engine API operations so an MCP server could be forged from the OpenAPI. Not a published
+  provider artifact.
 server:
   name: taste-engine
   transport: http
 tools:
-  - name: enhance_prompt
-    description: Enhance a website design prompt using brand guidelines fetched by URL or submission ID.
-    source_operation: openapi/taste-taste-engine-openapi.json#enhance_prompt_enhance__post
-  - name: enhance_slides_prompt
-    description: Enhance a slides/deck prompt using brand guidelines from a prior slides extraction.
-    source_operation: openapi/taste-taste-engine-openapi.json#enhance_slides_prompt_enhance_slides_post
+- name: enhance_prompt
+  description: Enhance a website design prompt using brand guidelines fetched by URL or submission ID.
+  source_operation: openapi/taste-taste-engine-openapi.json#enhance_prompt_enhance__post
+- name: enhance_slides_prompt
+  description: Enhance a slides/deck prompt using brand guidelines from a prior slides extraction.
+  source_operation: openapi/taste-taste-engine-openapi.json#enhance_slides_prompt_enhance_slides_post
+deployment:
+  mode: none
+  verified: derived
+  tools: 2
+  checked: '2026-08-12'
+  source: catalog MCP census

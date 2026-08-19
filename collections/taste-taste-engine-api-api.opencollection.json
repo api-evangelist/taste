@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Taste Engine health Taste Engine API API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Taste Engine API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Root endpoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

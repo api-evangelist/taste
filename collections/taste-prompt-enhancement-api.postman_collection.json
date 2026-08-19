@@ -1,0 +1,330 @@
+{
+  "item": [
+    {
+      "id": "1bd43fc7-ef44-4c96-ac5a-d440de09117d",
+      "name": "Prompt Enhancement",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7e94ea3-cd75-411a-a018-189277c4fc92",
+          "name": "Enhance Prompt",
+          "request": {
+            "name": "Enhance Prompt",
+            "description": {
+              "content": "Enhance a website design prompt using brand guidelines (sync).\n\nFetches brand guidelines from an existing extraction (by URL or submission ID)\nand enhances the user's prompt with brand-specific design tokens.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "enhance",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"<string>\",\n  \"url\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"strategy\": \"structured\",\n  \"surface_type\": \"<string>\",\n  \"include_sections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_sections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"additional_context\": \"<string>\",\n  \"auto_extract\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91a3f469-9bc8-4c29-8038-0bf0d07eef08",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enhance",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Authorization",
+                    "value": "string",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"Create a landing page for a SaaS product\",\n  \"url\": \"https://stripe.com\",\n  \"user_id\": \"<string>\",\n  \"strategy\": \"structured\",\n  \"surface_type\": \"saas_app\",\n  \"include_sections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_sections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"additional_context\": \"<string>\",\n  \"auto_extract\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enhanced_prompt\": \"string\",\n  \"id\": \"\",\n  \"request_id\": \"\",\n  \"original_prompt\": \"\",\n  \"structured_prompt\": {\n    \"key_0\": 2903.7038044929386\n  },\n  \"brand_context\": {\n    \"key_0\": 9360\n  },\n  \"reasoning\": \"\",\n  \"processing_time_ms\": 0,\n  \"model_used\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a6808fa-6214-4d07-a881-a28a886baf2a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enhance",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Authorization",
+                    "value": "string",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"Create a landing page for a SaaS product\",\n  \"url\": \"https://stripe.com\",\n  \"user_id\": \"<string>\",\n  \"strategy\": \"structured\",\n  \"surface_type\": \"saas_app\",\n  \"include_sections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_sections\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"additional_context\": \"<string>\",\n  \"auto_extract\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b15756a5-192e-40b8-b551-d0089246fae6",
+          "name": "Enhance Slides Prompt",
+          "request": {
+            "name": "Enhance Slides Prompt",
+            "description": {
+              "content": "Enhance a slides prompt using brand guidelines from an existing deck (sync).\n\nFetches deck analysis/guidelines from a previous slides extraction and\nenhances the user's prompt for brand-consistent slide creation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "enhance",
+                "slides"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"<string>\",\n  \"submission_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"strategy\": \"structured\",\n  \"slide_surface\": \"<string>\",\n  \"num_slides\": \"<integer>\",\n  \"include_slide_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_slide_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"additional_context\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59865a45-790b-4fba-a19b-a5dc15519860",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enhance",
+                    "slides"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Authorization",
+                    "value": "string",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"Create a pitch deck for our Series A fundraise\",\n  \"submission_id\": \"f33f811f-21bb-482c-81bc-c9d993989d3c\",\n  \"user_id\": \"<string>\",\n  \"strategy\": \"structured\",\n  \"slide_surface\": \"proposal\",\n  \"num_slides\": \"<integer>\",\n  \"include_slide_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_slide_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"additional_context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enhanced_prompt\": \"string\",\n  \"id\": \"\",\n  \"request_id\": \"\",\n  \"original_prompt\": \"\",\n  \"structured_prompt\": {\n    \"key_0\": 2903.7038044929386\n  },\n  \"brand_context\": {\n    \"key_0\": 9360\n  },\n  \"reasoning\": \"\",\n  \"processing_time_ms\": 0,\n  \"model_used\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d7a3346-36a3-493d-ab6b-03fed6bd27f7",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enhance",
+                    "slides"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Authorization",
+                    "value": "string",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"Create a pitch deck for our Series A fundraise\",\n  \"submission_id\": \"f33f811f-21bb-482c-81bc-c9d993989d3c\",\n  \"user_id\": \"<string>\",\n  \"strategy\": \"structured\",\n  \"slide_surface\": \"proposal\",\n  \"num_slides\": \"<integer>\",\n  \"include_slide_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exclude_slide_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"additional_context\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3c44e928-501a-46fa-87e2-b2a96dff4ec7",
+    "name": "Taste Engine health Prompt Enhancement API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for extracting design guidelines and generating creative briefs",
+      "type": "text/plain"
+    }
+  }
+}
