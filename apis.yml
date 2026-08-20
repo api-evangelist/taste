@@ -40,6 +40,14 @@ created: '2026-07-17'
 modified: '2026-07-21'
 tags:
 - Company
+- Artificial Intelligence
+- Design
+- Machine-Learning
+- Developer Tools
+- Prompt Engineering
+- Content Generation
+tags_raw:
+- Company
 - Ai
 - Design
 - Machine Learning
@@ -53,6 +61,8 @@ apis:
   humanURL: https://tastelabs.com/
   baseURL: https://api.tastelabs.com
   tags:
+  - Health
+  tags_raw:
   - health
   properties:
   - type: OpenAPI
