@@ -1,14 +1,12 @@
 aid: taste
 name: Taste
-description: >-
-  Taste Labs is a San Francisco research lab and infrastructure company building
-  "the taste layer for AI" — decoding subjective design domains to end AI slop.
-  Its Taste Engine API extracts brand and design guidelines from a reference site
-  or a prior submission and enhances website and slide-deck prompts so AI
-  generation stays on-brand, returning an enhanced prompt plus structured brand
-  context and reasoning. The company is backed by CRV and Amplify Partners and
-  runs the TasteMakers community program. This profile was enriched from the
-  provider's live public surface, including the Taste Engine API OpenAPI.
+description: Taste Labs is a San Francisco research lab and infrastructure company building "the taste
+  layer for AI" — decoding subjective design domains to end AI slop. Its Taste Engine API extracts brand
+  and design guidelines from a reference site or a prior submission and enhances website and slide-deck
+  prompts so AI generation stays on-brand, returning an enhanced prompt plus structured brand context
+  and reasoning. The company is backed by CRV and Amplify Partners and runs the TasteMakers community
+  program. This profile was enriched from the provider's live public surface, including the Taste Engine
+  API OpenAPI.
 url: https://raw.githubusercontent.com/api-evangelist/taste/refs/heads/main/apis.yml
 deliveryModel:
   model: unknown
@@ -49,7 +47,7 @@ x-enrichment:
   pass: local-v1
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-09-16'
 tags:
 - Company
 - Artificial Intelligence
@@ -90,7 +88,7 @@ apis:
   - type: OpenAPI
     url: openapi/taste-prompt-enhancement-api-openapi.yml
 - aid: taste:taste-taste-engine-api-api
-  name: Taste Taste Engine API API
+  name: Taste Engine API
   description: The Taste Engine API API from Taste — 1 operation(s) for taste engine api.
   humanURL: https://tastelabs.com/
   baseURL: https://api.tastelabs.com
@@ -123,7 +121,10 @@ common:
   url: data-model/taste-data-model.yml
 - type: X-MCPServerCandidate
   url: mcp/taste-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: AgentSkill
   url: skills/_index.yml
 - type: LLMsTxt
