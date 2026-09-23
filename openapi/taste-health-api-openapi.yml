@@ -1,15 +1,15 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Taste Engine health API
+  title: Taste Engine Health API
   description: API for extracting design guidelines and generating creative briefs
   version: 1.0.0
 tags:
-- name: health
+- name: Health
 paths:
   /health:
     get:
       tags:
-      - health
+      - Health
       summary: Liveness Check
       description: Liveness probe - returns 200 if the process is up.
       operationId: liveness_check_health_get
@@ -22,7 +22,7 @@ paths:
   /health/full:
     get:
       tags:
-      - health
+      - Health
       summary: Health Check
       description: 'Full health check. The gateway proxies to core via /v2 and has no
 

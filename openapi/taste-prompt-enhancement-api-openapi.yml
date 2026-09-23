@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Taste Engine health Prompt Enhancement API
+  title: Taste Engine Prompt Enhancement API
   description: API for extracting design guidelines and generating creative briefs
   version: 1.0.0
 tags:
@@ -88,25 +88,22 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    SlideSurface:
+    DesignSurface:
       type: string
       enum:
-      - pitch_deck
-      - investor_deck
-      - sales_deck
-      - product_deck
-      - company_overview
-      - quarterly_review
-      - team_update
-      - workshop
-      - training
-      - webinar
-      - conference
-      - case_study
-      - proposal
+      - landing_page
+      - product_page
+      - pricing_page
+      - about_page
+      - blog_page
+      - dashboard
+      - marketing_site
+      - saas_app
+      - e_commerce
+      - portfolio
       - other
-      title: SlideSurface
-      description: Type of slide deck.
+      title: DesignSurface
+      description: Type of design surface (website).
     EnhancementStrategy:
       type: string
       enum:
@@ -116,6 +113,70 @@ components:
       - minimal
       title: EnhancementStrategy
       description: Strategy for enhancing prompts.
+    EnhanceRequest:
+      properties:
+        prompt:
+          type: string
+          minLength: 1
+          title: Prompt
+          description: The user's prompt to enhance
+          examples:
+          - Create a landing page for a SaaS product
+        url:
+          type: string
+          title: Url
+          description: URL or submission ID to fetch brand guidelines from
+          examples:
+          - https://stripe.com
+          - f33f811f-21bb-482c-81bc-c9d993989d3c
+        user_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User Id
+          description: User ID for tracking enhancements
+        strategy:
+          $ref: '#/components/schemas/EnhancementStrategy'
+          description: Enhancement strategy
+          default: structured
+        surface_type:
+          anyOf:
+          - $ref: '#/components/schemas/DesignSurface'
+          - type: 'null'
+          description: Target design surface type
+        include_sections:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Include Sections
+          description: Sections to include
+        exclude_sections:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Exclude Sections
+          description: Sections to exclude
+        additional_context:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Additional Context
+          description: Additional context for enhancement
+        auto_extract:
+          type: boolean
+          title: Auto Extract
+          description: If URL has no guidelines, trigger extraction first
+          default: false
+      type: object
+      required:
+      - prompt
+      - url
+      title: EnhanceRequest
+      description: Request to enhance a website design prompt.
     HTTPValidationError:
       properties:
         detail:
@@ -189,96 +250,6 @@ components:
       - submission_id
       title: SlidesEnhanceRequest
       description: Request to enhance a slides prompt.
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    EnhanceRequest:
-      properties:
-        prompt:
-          type: string
-          minLength: 1
-          title: Prompt
-          description: The user's prompt to enhance
-          examples:
-          - Create a landing page for a SaaS product
-        url:
-          type: string
-          title: Url
-          description: URL or submission ID to fetch brand guidelines from
-          examples:
-          - https://stripe.com
-          - f33f811f-21bb-482c-81bc-c9d993989d3c
-        user_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: User Id
-          description: User ID for tracking enhancements
-        strategy:
-          $ref: '#/components/schemas/EnhancementStrategy'
-          description: Enhancement strategy
-          default: structured
-        surface_type:
-          anyOf:
-          - $ref: '#/components/schemas/DesignSurface'
-          - type: 'null'
-          description: Target design surface type
-        include_sections:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Include Sections
-          description: Sections to include
-        exclude_sections:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Exclude Sections
-          description: Sections to exclude
-        additional_context:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Additional Context
-          description: Additional context for enhancement
-        auto_extract:
-          type: boolean
-          title: Auto Extract
-          description: If URL has no guidelines, trigger extraction first
-          default: false
-      type: object
-      required:
-      - prompt
-      - url
-      title: EnhanceRequest
-      description: Request to enhance a website design prompt.
     EnhanceResponse:
       properties:
         id:
@@ -322,19 +293,48 @@ components:
       - enhanced_prompt
       title: EnhanceResponse
       description: Response from prompt enhancement (sync).
-    DesignSurface:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    SlideSurface:
       type: string
       enum:
-      - landing_page
-      - product_page
-      - pricing_page
-      - about_page
-      - blog_page
-      - dashboard
-      - marketing_site
-      - saas_app
-      - e_commerce
-      - portfolio
+      - pitch_deck
+      - investor_deck
+      - sales_deck
+      - product_deck
+      - company_overview
+      - quarterly_review
+      - team_update
+      - workshop
+      - training
+      - webinar
+      - conference
+      - case_study
+      - proposal
       - other
-      title: DesignSurface
-      description: Type of design surface (website).
+      title: SlideSurface
+      description: Type of slide deck.

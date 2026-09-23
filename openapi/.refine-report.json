@@ -1,18 +1,29 @@
 {
   "provider": "taste",
   "sources": [
-    "taste-health-api-openapi.yml",
-    "taste-prompt-enhancement-api-openapi.yml",
-    "taste-taste-engine-api-api-openapi.yml"
+    "_original/taste-taste-engine-openapi.json"
   ],
   "outputs": [
-    "taste-health-api-openapi.yml",
     "taste-prompt-enhancement-api-openapi.yml",
-    "taste-taste-engine-api-api-openapi.yml"
+    "taste-taste-engine-api-api-openapi.yml",
+    "taste-health-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "taste-taste-engine-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "taste-taste-engine-openapi.json: tagged paths GET / -> Taste Engine API",
+    "taste-taste-engine-openapi.json: declared missing tag: Prompt Enhancement",
+    "taste-taste-engine-openapi.json: declared missing tag: Taste Engine API",
+    "taste-taste-engine-openapi.json: declared missing tag: health",
+    "taste-taste-engine-openapi.json: declared missing tag: prompt-enhancement",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "taste-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "taste-prompt-enhancement-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "taste-taste-engine-api-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
