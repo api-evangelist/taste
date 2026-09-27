@@ -88,31 +88,32 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    DesignSurface:
-      type: string
-      enum:
-      - landing_page
-      - product_page
-      - pricing_page
-      - about_page
-      - blog_page
-      - dashboard
-      - marketing_site
-      - saas_app
-      - e_commerce
-      - portfolio
-      - other
-      title: DesignSurface
-      description: Type of design surface (website).
-    EnhancementStrategy:
-      type: string
-      enum:
-      - full_rewrite
-      - augment
-      - structured
-      - minimal
-      title: EnhancementStrategy
-      description: Strategy for enhancing prompts.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     EnhanceRequest:
       properties:
         prompt:
@@ -177,6 +178,77 @@ components:
       - url
       title: EnhanceRequest
       description: Request to enhance a website design prompt.
+    SlideSurface:
+      type: string
+      enum:
+      - pitch_deck
+      - investor_deck
+      - sales_deck
+      - product_deck
+      - company_overview
+      - quarterly_review
+      - team_update
+      - workshop
+      - training
+      - webinar
+      - conference
+      - case_study
+      - proposal
+      - other
+      title: SlideSurface
+      description: Type of slide deck.
+    EnhancementStrategy:
+      type: string
+      enum:
+      - full_rewrite
+      - augment
+      - structured
+      - minimal
+      title: EnhancementStrategy
+      description: Strategy for enhancing prompts.
+    EnhanceResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Database record ID
+          default: ''
+        request_id:
+          type: string
+          title: Request Id
+          default: ''
+        original_prompt:
+          type: string
+          title: Original Prompt
+          default: ''
+        enhanced_prompt:
+          type: string
+          title: Enhanced Prompt
+        structured_prompt:
+          additionalProperties: true
+          type: object
+          title: Structured Prompt
+        brand_context:
+          additionalProperties: true
+          type: object
+          title: Brand Context
+        reasoning:
+          type: string
+          title: Reasoning
+          default: ''
+        processing_time_ms:
+          type: integer
+          title: Processing Time Ms
+          default: 0
+        model_used:
+          type: string
+          title: Model Used
+          default: ''
+      type: object
+      required:
+      - enhanced_prompt
+      title: EnhanceResponse
+      description: Response from prompt enhancement (sync).
     HTTPValidationError:
       properties:
         detail:
@@ -250,91 +322,19 @@ components:
       - submission_id
       title: SlidesEnhanceRequest
       description: Request to enhance a slides prompt.
-    EnhanceResponse:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: Database record ID
-          default: ''
-        request_id:
-          type: string
-          title: Request Id
-          default: ''
-        original_prompt:
-          type: string
-          title: Original Prompt
-          default: ''
-        enhanced_prompt:
-          type: string
-          title: Enhanced Prompt
-        structured_prompt:
-          additionalProperties: true
-          type: object
-          title: Structured Prompt
-        brand_context:
-          additionalProperties: true
-          type: object
-          title: Brand Context
-        reasoning:
-          type: string
-          title: Reasoning
-          default: ''
-        processing_time_ms:
-          type: integer
-          title: Processing Time Ms
-          default: 0
-        model_used:
-          type: string
-          title: Model Used
-          default: ''
-      type: object
-      required:
-      - enhanced_prompt
-      title: EnhanceResponse
-      description: Response from prompt enhancement (sync).
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    SlideSurface:
+    DesignSurface:
       type: string
       enum:
-      - pitch_deck
-      - investor_deck
-      - sales_deck
-      - product_deck
-      - company_overview
-      - quarterly_review
-      - team_update
-      - workshop
-      - training
-      - webinar
-      - conference
-      - case_study
-      - proposal
+      - landing_page
+      - product_page
+      - pricing_page
+      - about_page
+      - blog_page
+      - dashboard
+      - marketing_site
+      - saas_app
+      - e_commerce
+      - portfolio
       - other
-      title: SlideSurface
-      description: Type of slide deck.
+      title: DesignSurface
+      description: Type of design surface (website).

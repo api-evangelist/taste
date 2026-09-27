@@ -52,7 +52,7 @@ tags:
 - Company
 - Artificial Intelligence
 - Design
-- Machine-Learning
+- Machine Learning
 - Developer Tools
 - Prompt Engineering
 - Content Generation
@@ -64,9 +64,10 @@ tags_raw:
 - Developer Tools
 - Prompt Engineering
 - Content Generation
+- Machine-Learning
 apis:
 - aid: taste:taste-health-api
-  name: Taste health API
+  name: Taste Health API
   description: The health API from Taste — 2 operation(s) for health.
   humanURL: https://tastelabs.com/
   baseURL: https://api.tastelabs.com
