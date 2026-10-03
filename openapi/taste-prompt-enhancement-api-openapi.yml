@@ -88,32 +88,95 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
+    DesignSurface:
+      type: string
+      enum:
+      - landing_page
+      - product_page
+      - pricing_page
+      - about_page
+      - blog_page
+      - dashboard
+      - marketing_site
+      - saas_app
+      - e_commerce
+      - portfolio
+      - other
+      title: DesignSurface
+      description: Type of design surface (website).
+    SlidesEnhanceRequest:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        prompt:
           type: string
-          title: Message
-        type:
+          minLength: 1
+          title: Prompt
+          description: The user's prompt to enhance for slide deck creation
+          examples:
+          - Create a pitch deck for our Series A fundraise
+        submission_id:
           type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
+          title: Submission Id
+          description: Submission ID to fetch slides brand guidelines from
+          examples:
+          - f33f811f-21bb-482c-81bc-c9d993989d3c
+        user_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User Id
+          description: User ID for tracking enhancements
+        strategy:
+          $ref: '#/components/schemas/EnhancementStrategy'
+          description: Enhancement strategy
+          default: structured
+        slide_surface:
+          anyOf:
+          - $ref: '#/components/schemas/SlideSurface'
+          - type: 'null'
+          description: Target slide deck type
+        num_slides:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Num Slides
+          description: Target number of slides
+        include_slide_types:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Include Slide Types
+          description: Slide types to include
+        exclude_slide_types:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          title: Exclude Slide Types
+          description: Slide types to exclude
+        additional_context:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Additional Context
+          description: Additional context for enhancement
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - prompt
+      - submission_id
+      title: SlidesEnhanceRequest
+      description: Request to enhance a slides prompt.
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     EnhanceRequest:
       properties:
         prompt:
@@ -197,15 +260,6 @@ components:
       - other
       title: SlideSurface
       description: Type of slide deck.
-    EnhancementStrategy:
-      type: string
-      enum:
-      - full_rewrite
-      - augment
-      - structured
-      - minimal
-      title: EnhancementStrategy
-      description: Strategy for enhancing prompts.
     EnhanceResponse:
       properties:
         id:
@@ -249,92 +303,38 @@ components:
       - enhanced_prompt
       title: EnhanceResponse
       description: Response from prompt enhancement (sync).
-    HTTPValidationError:
+    ValidationError:
       properties:
-        detail:
+        loc:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    SlidesEnhanceRequest:
-      properties:
-        prompt:
+          title: Location
+        msg:
           type: string
-          minLength: 1
-          title: Prompt
-          description: The user's prompt to enhance for slide deck creation
-          examples:
-          - Create a pitch deck for our Series A fundraise
-        submission_id:
+          title: Message
+        type:
           type: string
-          title: Submission Id
-          description: Submission ID to fetch slides brand guidelines from
-          examples:
-          - f33f811f-21bb-482c-81bc-c9d993989d3c
-        user_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: User Id
-          description: User ID for tracking enhancements
-        strategy:
-          $ref: '#/components/schemas/EnhancementStrategy'
-          description: Enhancement strategy
-          default: structured
-        slide_surface:
-          anyOf:
-          - $ref: '#/components/schemas/SlideSurface'
-          - type: 'null'
-          description: Target slide deck type
-        num_slides:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Num Slides
-          description: Target number of slides
-        include_slide_types:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Include Slide Types
-          description: Slide types to include
-        exclude_slide_types:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          title: Exclude Slide Types
-          description: Slide types to exclude
-        additional_context:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Additional Context
-          description: Additional context for enhancement
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
       type: object
       required:
-      - prompt
-      - submission_id
-      title: SlidesEnhanceRequest
-      description: Request to enhance a slides prompt.
-    DesignSurface:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    EnhancementStrategy:
       type: string
       enum:
-      - landing_page
-      - product_page
-      - pricing_page
-      - about_page
-      - blog_page
-      - dashboard
-      - marketing_site
-      - saas_app
-      - e_commerce
-      - portfolio
-      - other
-      title: DesignSurface
-      description: Type of design surface (website).
+      - full_rewrite
+      - augment
+      - structured
+      - minimal
+      title: EnhancementStrategy
+      description: Strategy for enhancing prompts.
