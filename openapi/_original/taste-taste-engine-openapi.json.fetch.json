@@ -1,0 +1,12 @@
+{
+ "url": "https://api.tastelabs.com/openapi.json",
+ "requested_url": "https://api.tastelabs.com/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 8679,
+ "sha256": "7aa94dfc47b3c6e6d5889e96ca27f7396d7ed860b565b511066b2936862314b7",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
