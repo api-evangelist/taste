@@ -55,3 +55,9 @@ components:
       type: object
       title: HealthResponse
       description: Health check response.
+x-provenance:
+  method: harvested
+  publisher: Taste
+  source: https://api.tastelabs.com/openapi.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
